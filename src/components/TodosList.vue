@@ -6,7 +6,7 @@
       <li v-for="todo in todos" :key="todo.id">
         {{ todo.body }}
         <input type="checkbox" :checked="todo.completed" @change="() => toggleTodo(todo.id)" />
-        <button @click="() => deleteTodos(todo.id)">delete</button>
+        <button @click="() => deleteTodo(todo.id)">delete</button>
       </li>
     </ul>
   </div>
@@ -20,13 +20,12 @@ const store = useTodosStore();
 
 const { todos } = storeToRefs(store);
 
-const deleteTodos = (todoId: number) => {
-  store.removeTodo(todoId);
-};
+const deleteTodo = store.removeTodo;
+// const deleteTodos = (todoId: number) => {
+//   store.removeTodo(todoId);
+// };
 
-const toggleTodo = (todoId: number) => {
-  store.checkTodo(todoId);
-};
+const toggleTodo = store.checkTodo;
 </script>
 
 <style scoped></style>
